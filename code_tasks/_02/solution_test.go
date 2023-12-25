@@ -9,22 +9,26 @@ import (
 	"testing"
 )
 
-var arrays = [][]int64{
-	{1},
-	{2, 4, 6, 8, 10},
-	{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
-}
+var (
+	arrays  [][]int64
+	outputs [][]int64
+)
 
-var outputs = make([][]int64, 0, len(arrays))
-
-func init() {
+func initArrays() {
+	arrays = [][]int64{
+		{1},
+		{2, 4, 6, 8, 10},
+		{1, 2, 3, 4, 5, 6, 7, 8, 9, 10},
+	}
 	length := 100
 	longTestCase := make([]int64, 0, length)
 	for i := 0; i < length; i++ {
 		longTestCase = append(longTestCase, int64(i)+15)
 	}
 	arrays = append(arrays, longTestCase)
+}
 
+func initOutputs() {
 	for i := 0; i < len(arrays); i++ {
 		squared := make([]int64, 0, len(arrays[i]))
 		for _, v := range arrays[i] {
@@ -33,6 +37,11 @@ func init() {
 		sort.Slice(squared, func(i, j int) bool { return squared[i] < squared[j] })
 		outputs = append(outputs, squared)
 	}
+}
+
+func init() {
+	initArrays()
+	initOutputs()
 }
 
 func Test(t *testing.T) {
