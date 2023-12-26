@@ -96,8 +96,8 @@ func setupWorkers(numWorkers int) (chan<- Task, []chan<- struct{}, *sync.WaitGro
 	wg := sync.WaitGroup{}
 	for workerIx := 0; workerIx < numWorkers; workerIx++ {
 		shutdownChs[workerIx] = make(chan struct{}, 1)
-		go worker(tasksCh, shutdownChs[workerIx], &wg)
 		wg.Add(1)
+		go worker(tasksCh, shutdownChs[workerIx], &wg)
 	}
 	return tasksCh, chansToWriters(shutdownChs...), &wg
 }

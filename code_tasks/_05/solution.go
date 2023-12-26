@@ -21,10 +21,10 @@ func main() {
 
 	wg := sync.WaitGroup{}
 
+	wg.Add(1)
 	go player("Jules Winnfield", &wg, gameTable, cfg.pingDelay, time.After(cfg.gametime))
 	wg.Add(1)
 	go player("Vincent Vega", &wg, gameTable, cfg.pingDelay, time.After(cfg.gametime))
-	wg.Add(1)
 
 	// drop the ball (e.g. start the game)
 	gameTable <- Ball{}
