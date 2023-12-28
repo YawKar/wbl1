@@ -32,7 +32,7 @@ func TestWithEmptySlices(t *testing.T) {
 	}
 }
 
-func TestIntersecedSlices(t *testing.T) {
+func TestIntersectedSlices(t *testing.T) {
 	startIxs := []int{1, 200, 1000, 100000}
 	lengths := make([]int, 10) // must be divisible by 4
 	for i := 0; i < len(lengths); i++ {
