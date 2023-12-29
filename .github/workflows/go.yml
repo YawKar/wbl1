@@ -28,7 +28,7 @@ jobs:
       run: go work use -r .
     
     - name: Build
-      run: go build -v ./*/**
+      run: go build -v ./code_tasks/**
 
     - name: Test
-      run: go test -race -v ./*/**
+      run: go test -race -v ./code_tasks/**
